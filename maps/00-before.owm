@@ -1,0 +1,34 @@
+title Easy Is Taken
+style wardley
+
+anchor Product Developer [0.96, 0.45]
+
+component Trusted Running Service [0.86, 0.42]
+component Ship A Change Safely [0.80, 0.55]
+component Developer Portal [0.72, 0.56]
+component Golden Path Templates [0.66, 0.40] (build)
+component Service Code [0.62, 0.30]
+component Org Opinions [0.58, 0.18]
+component Pipeline Definitions [0.56, 0.45] (build)
+component IaC Modules [0.50, 0.48] (build)
+component Ownership Boundaries [0.48, 0.22]
+component Deployment Pipeline [0.38, 0.58]
+component Observability [0.30, 0.60]
+component Kubernetes [0.22, 0.72] (buy)
+component Cloud Compute [0.08, 0.90] (outsource)
+
+Product Developer->Trusted Running Service
+Product Developer->Ship A Change Safely
+Trusted Running Service->Service Code
+Trusted Running Service->Observability
+Ship A Change Safely->Developer Portal
+Developer Portal->Golden Path Templates
+Golden Path Templates->Org Opinions
+Golden Path Templates->Pipeline Definitions
+Golden Path Templates->IaC Modules
+Service Code->Ownership Boundaries
+Pipeline Definitions->Deployment Pipeline
+IaC Modules->Kubernetes
+Deployment Pipeline->Kubernetes
+Observability->Kubernetes
+Kubernetes->Cloud Compute

@@ -1,0 +1,65 @@
+title Easy Is Taken
+style wardley
+
+anchor Product Developer [0.96, 0.45]
+anchor Developer Agent [0.96, 0.78]
+
+component Trusted Running Service [0.86, 0.42]
+component Ship A Change Safely [0.80, 0.55]
+component Human Decision Points [0.74, 0.08] (build)
+component Developer Portal [0.72, 0.56]
+component Golden Path Templates [0.66, 0.40] inertia
+component Service Code [0.62, 0.30]
+component Org Opinions [0.58, 0.18] (build)
+component Pipeline Definitions [0.56, 0.45]
+component Code Review [0.54, 0.66] inertia
+component IaC Modules [0.50, 0.48]
+component Ownership Boundaries [0.48, 0.22] (build)
+component Understanding Without Reading Code [0.44, 0.07]
+component Deployment Pipeline [0.38, 0.58]
+component Context Specific Tools [0.30, 0.14] (build)
+component Observability [0.30, 0.60]
+component Kubernetes [0.22, 0.72] (buy)
+component Model Provider [0.14, 0.70] (outsource)
+component Cloud Compute [0.08, 0.90] (outsource)
+
+evolve Golden Path Templates 0.82
+evolve Pipeline Definitions 0.86
+evolve IaC Modules 0.84
+evolve Service Code 0.80
+
+Product Developer->Trusted Running Service
+Product Developer->Ship A Change Safely
+Developer Agent->Ship A Change Safely
+Developer Agent->Model Provider
+Trusted Running Service->Human Decision Points
+Trusted Running Service->Service Code
+Trusted Running Service->Understanding Without Reading Code
+Trusted Running Service->Deployment Pipeline
+Trusted Running Service->Observability
+Human Decision Points->Org Opinions
+Ship A Change Safely->Developer Portal
+Ship A Change Safely->Code Review
+Developer Portal->Golden Path Templates
+Golden Path Templates->Org Opinions
+Golden Path Templates->Pipeline Definitions
+Golden Path Templates->IaC Modules
+Service Code->Ownership Boundaries
+Service Code->Model Provider
+Understanding Without Reading Code->Context Specific Tools
+Context Specific Tools->Model Provider
+Pipeline Definitions->Deployment Pipeline
+IaC Modules->Kubernetes
+Deployment Pipeline->Kubernetes
+Observability->Kubernetes
+Kubernetes->Cloud Compute
+Model Provider->Cloud Compute
+
+annotation 1 [[0.66,0.72],[0.56,0.76]] Worth its tokens
+annotation 2 [0.93, 0.86] A second reader
+annotation 3 [0.34, 0.68] Cheaper code, more of it
+annotation 4 [0.62, 0.36] Past success holds position
+annotation 5 [0.40, 0.03] Practice co-evolves
+annotation 6 [0.70, 0.02] Where we value humans
+annotation 7 [0.12, 0.62] A utility we do not steer
+annotations [0.30, 0.80]
