@@ -1,0 +1,86 @@
+title You can only capture what someone knew they decided
+style wardley
+
+anchor Developer [0.96, 0.40]
+anchor The business [0.96, 0.68]
+
+component Trusted running service [0.88, 0.50]
+component Decision ownership [0.82, 0.20]
+component Surfacing delegated decisions [0.73, 0.07]
+component Self-service portal [0.79, 0.56]
+component Golden path [0.71, 0.33] inertia
+component Coding agent [0.70, 0.58]
+component Agent operating practice [0.64, 0.13]
+component Agent context [0.63, 0.44]
+component Templates and modules [0.62, 0.80]
+component Regulated opinion [0.62, 0.60]
+component Business-specific decisions [0.56, 0.20]
+component Delivery pipeline [0.54, 0.68]
+component Common practice opinion [0.50, 0.86]
+component Writing infra config [0.47, 0.72]
+component Deciding [0.46, 0.12] (build)
+component Policy checks [0.44, 0.52]
+component Encoding decisions [0.41, 0.63]
+component Writing software [0.38, 0.76]
+component Evidence trail [0.38, 0.30]
+component Usage signals [0.36, 0.14]
+component Operating shared state [0.33, 0.48]
+component LLM defaults [0.31, 0.86]
+component Kubernetes [0.30, 0.66]
+component Service contracts [0.27, 0.22]
+component Delegated micro-decisions [0.25, 0.56]
+component LLMs [0.24, 0.76]
+component Recovery [0.18, 0.32]
+component Runtime [0.17, 0.82] (outsource)
+component Compute [0.08, 0.93] (outsource)
+
+Developer->Trusted running service
+Developer->Coding agent
+The business->Trusted running service
+The business->Decision ownership
+The business->Evidence trail
+Decision ownership->Deciding
+Decision ownership->Surfacing delegated decisions
+Surfacing delegated decisions->Usage signals
+Surfacing delegated decisions->Delegated micro-decisions
+Trusted running service->Self-service portal
+Trusted running service->Writing software
+Trusted running service->Operating shared state
+Trusted running service->Service contracts
+Self-service portal->Golden path
+Self-service portal->Delivery pipeline
+Golden path->Templates and modules
+Golden path->Common practice opinion
+Golden path->Regulated opinion
+Golden path->Business-specific decisions
+Coding agent->Agent context
+Coding agent->Agent operating practice
+Coding agent->Writing infra config
+Coding agent->Writing software
+Coding agent->Delivery pipeline
+Coding agent->LLM defaults
+Coding agent->Delegated micro-decisions
+Delegated micro-decisions->LLM defaults
+Agent context->Business-specific decisions
+Agent context->Regulated opinion
+LLM defaults->Common practice opinion
+LLM defaults->LLMs
+Delivery pipeline->Policy checks
+Delivery pipeline->Evidence trail
+Delivery pipeline->Usage signals
+Delivery pipeline->Kubernetes
+Policy checks->Regulated opinion
+Policy checks->Business-specific decisions
+Business-specific decisions->Deciding
+Business-specific decisions->Encoding decisions
+Encoding decisions->Writing software
+Operating shared state->Kubernetes
+Operating shared state->Recovery
+Writing infra config->Writing software
+Writing software->LLMs
+Kubernetes->Runtime
+Runtime->Compute
+LLMs->Compute
+
+note Decisions arrive here unannounced [0.20, 0.42]
+note Capture assumes the decision came first [0.77, 0.03]

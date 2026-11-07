@@ -1,0 +1,48 @@
+title Suppose writing moves: a second route opens
+style wardley
+
+anchor Developer [0.96, 0.40]
+
+component Trusted running service [0.88, 0.50]
+component Self-service portal [0.79, 0.56]
+component Golden path [0.71, 0.33] inertia
+component Coding agent [0.70, 0.58]
+component Templates and modules [0.62, 0.47]
+component Tacit opinion [0.55, 0.16]
+component Delivery pipeline [0.54, 0.68]
+component Writing infra config [0.47, 0.33]
+component Policy checks [0.44, 0.52]
+component Writing software [0.38, 0.30]
+component Kubernetes [0.30, 0.66]
+component LLMs [0.24, 0.46]
+component Runtime [0.17, 0.82] (outsource)
+component Compute [0.08, 0.93] (outsource)
+
+evolve Templates and modules 0.80
+evolve Writing infra config 0.72
+evolve Writing software 0.76
+evolve LLMs 0.76
+
+Developer->Trusted running service
+Developer->Coding agent
+Trusted running service->Self-service portal
+Trusted running service->Writing software
+Self-service portal->Golden path
+Self-service portal->Delivery pipeline
+Golden path->Templates and modules
+Golden path->Tacit opinion
+Templates and modules->Writing infra config
+Coding agent->Writing infra config
+Coding agent->Writing software
+Coding agent->Delivery pipeline
+Delivery pipeline->Policy checks
+Delivery pipeline->Kubernetes
+Policy checks->Tacit opinion
+Writing infra config->Writing software
+Writing software->LLMs
+Kubernetes->Runtime
+Runtime->Compute
+LLMs->Compute
+
+note Supposition: no source says writing is a utility [0.33, 0.56]
+note The agent route skips the golden path and all it carried [0.65, 0.08]

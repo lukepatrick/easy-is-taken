@@ -1,0 +1,65 @@
+title 04 A second user was on the map all along
+style wardley
+// Same supposition, same rule: the model never writes a bad line.
+// Everything added here has to survive that rule.
+
+anchor Developer [0.97, 0.50]
+anchor Organization [0.97, 0.22]
+
+component Running service [0.89, 0.58]
+component Answerable change [0.89, 0.27]
+component Decision ownership [0.80, 0.11]
+component Coding agent [0.78, 0.64] (buy)
+component Binding check [0.71, 0.34]
+component Generated infra config [0.66, 0.84]
+component Agent instruction file [0.65, 0.46]
+component Cross-service contracts [0.60, 0.21]
+component Organizational opinion [0.53, 0.30]
+component Deployment pipeline [0.46, 0.70] (buy)
+component Writing infra config [0.56, 0.82]
+component Recovery from failure [0.46, 0.26]
+component Policy checks [0.36, 0.50] (buy)
+component Model defaults [0.41, 0.76]
+component System understanding [0.35, 0.16]
+component Shared infra state [0.28, 0.44] (buy)
+component LLM [0.31, 0.86] (outsource)
+component Identity and access [0.24, 0.78] (buy)
+component Managed runtime [0.17, 0.85] (outsource)
+component Container orchestration [0.12, 0.68] (outsource)
+component Compute [0.06, 0.95] (outsource)
+
+Developer->Running service
+Developer->Coding agent
+Organization->Running service
+Organization->Answerable change
+Running service->Coding agent
+Answerable change->Decision ownership
+Answerable change->Binding check
+Answerable change->Cross-service contracts
+Answerable change->Recovery from failure
+Decision ownership->Organizational opinion
+Binding check->Organizational opinion
+Binding check->Deployment pipeline
+Binding check->Policy checks
+Coding agent->Agent instruction file
+Coding agent->Generated infra config
+Agent instruction file->Organizational opinion
+Cross-service contracts->Shared infra state
+Recovery from failure->System understanding
+Recovery from failure->Shared infra state
+Generated infra config->Writing infra config
+Generated infra config->Deployment pipeline
+Writing infra config->Model defaults
+Writing infra config->LLM
+Model defaults->LLM
+Deployment pipeline->Policy checks
+Deployment pipeline->Shared infra state
+Deployment pipeline->Identity and access
+Deployment pipeline->Managed runtime
+Managed runtime->Container orchestration
+Container orchestration->Compute
+LLM->Compute
+
+note Suppose [0.97, 0.80]
+note A file in the author's repo binds nobody [0.75, 0.42]
+note Each service perfect. Between them, who agrees [0.55, 0.02]

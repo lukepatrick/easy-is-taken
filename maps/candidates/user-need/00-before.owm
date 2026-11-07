@@ -1,0 +1,39 @@
+title Easy Is Taken - user-need 00 - the map we drew
+style wardley
+
+// the user as platform teams usually name them
+anchor Developer [0.96, 0.55]
+
+// the need
+component Ship a change [0.88, 0.55]
+
+// what the platform offered
+component Internal platform [0.72, 0.40] (build)
+component Self-service portal [0.64, 0.50] (buy)
+component Golden paths [0.56, 0.35] (build)
+component Templates and modules [0.46, 0.56] (build)
+component Delivery pipeline [0.44, 0.71] (buy)
+component Policy checks [0.36, 0.48]
+component Human review [0.34, 0.62]
+
+// what it stood on
+component Writing software [0.30, 0.33]
+component Kubernetes [0.26, 0.68] (buy)
+component Infra know-how [0.14, 0.38]
+component Cloud runtime [0.06, 0.92] (outsource)
+
+Developer->Ship a change
+Ship a change->Internal platform
+Ship a change->Writing software
+Internal platform->Self-service portal
+Self-service portal->Golden paths
+Golden paths->Templates and modules
+Golden paths->Delivery pipeline
+Templates and modules->Writing software
+Delivery pipeline->Policy checks
+Delivery pipeline->Human review
+Delivery pipeline->Kubernetes
+Writing software->Infra know-how
+Kubernetes->Cloud runtime
+
+note The offer: you need not write this or know this [0.22, 0.10]

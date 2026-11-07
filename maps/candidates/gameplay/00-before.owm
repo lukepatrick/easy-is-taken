@@ -1,0 +1,46 @@
+title Easy Is Taken (gameplay) 00: two roads to production
+style wardley
+
+// Before the move. No date claimed. All positions are judgment.
+anchor Business [0.97, 0.36]
+anchor Developer [0.97, 0.64]
+
+component Trusted running service [0.90, 0.50]
+component Ship a change [0.83, 0.60]
+component Developer portal [0.76, 0.52] (build)
+component Golden path [0.70, 0.44] (build)
+component Roll your own [0.70, 0.20]
+component Change review [0.63, 0.34]
+component Templates [0.60, 0.50] (build)
+component Infra modules [0.54, 0.47] (build)
+component Policy checks [0.50, 0.36] (build)
+component Delivery pipeline [0.46, 0.66] (build)
+component Writing software [0.38, 0.30] (build)
+component Cloud access [0.33, 0.76] (buy)
+component Kubernetes [0.28, 0.74] (build)
+component Serverless [0.20, 0.86] (outsource)
+component Compute [0.10, 0.90] (outsource)
+
+Business->Trusted running service
+Trusted running service->Ship a change
+Developer->Ship a change
+Ship a change->Developer portal
+Ship a change->Roll your own
+Developer portal->Golden path
+Golden path->Templates
+Golden path->Infra modules
+Golden path->Policy checks
+Golden path->Change review
+Golden path->Delivery pipeline
+Roll your own->Change review
+Roll your own->Writing software
+Roll your own->Cloud access
+Templates->Writing software
+Infra modules->Writing software
+Delivery pipeline->Kubernetes
+Delivery pipeline->Cloud access
+Kubernetes->Compute
+Serverless->Compute
+
+note Written once, used by many [0.57, 0.18]
+note The expensive road [0.76, 0.14]

@@ -1,0 +1,80 @@
+title Easy Is Taken - user-need 03 - who answers
+style wardley
+
+anchor Customer [0.99, 0.46]
+anchor Whoever answers for it [0.96, 0.18]
+anchor Agent as user [0.96, 0.36]
+anchor Developer [0.96, 0.55]
+anchor Anyone with a prompt [0.96, 0.76]
+
+component Trusted running service [0.92, 0.46]
+component Answer for what runs [0.88, 0.25]
+component Usable context [0.84, 0.36]
+component Ship a change [0.88, 0.55]
+component Get it written [0.80, 0.78]
+component Get it through [0.80, 0.50]
+
+component Internal platform [0.72, 0.40] (build)
+component Self-service portal [0.64, 0.50] (buy)
+component Golden paths [0.56, 0.35] (build)
+component Templates and modules [0.46, 0.84] (build) inertia
+component Delivery pipeline [0.44, 0.71] (buy)
+component Policy checks [0.36, 0.48]
+component Human review [0.34, 0.62] inertia
+
+// the chain nobody put under the developer
+component Verification [0.60, 0.26]
+component Audit trail [0.52, 0.45]
+component Decisions and opinions [0.50, 0.15]
+component Understanding of the system [0.34, 0.10]
+component Containment and recovery [0.28, 0.22]
+
+component Coding agent [0.68, 0.66] (buy)
+
+component Writing software [0.30, 0.78]
+component Kubernetes [0.26, 0.68] (buy)
+component LLM [0.18, 0.76] (outsource)
+component Infra know-how [0.14, 0.66]
+component Cloud runtime [0.06, 0.92] (outsource)
+
+Customer->Trusted running service
+Trusted running service->Ship a change
+Trusted running service->Answer for what runs
+Whoever answers for it->Answer for what runs
+Agent as user->Usable context
+Developer->Ship a change
+Anyone with a prompt->Get it written
+Ship a change->Get it written
+Ship a change->Get it through
+Get it written->Coding agent
+Get it through->Internal platform
+Get it through->Verification
+Usable context->Internal platform
+Answer for what runs->Verification
+Answer for what runs->Audit trail
+Answer for what runs->Decisions and opinions
+Answer for what runs->Containment and recovery
+Verification->Policy checks
+Verification->Human review
+Verification->Decisions and opinions
+Audit trail->Delivery pipeline
+Decisions and opinions->Understanding of the system
+Containment and recovery->Cloud runtime
+Coding agent->Writing software
+Coding agent->Cloud runtime
+Internal platform->Self-service portal
+Self-service portal->Golden paths
+Golden paths->Templates and modules
+Golden paths->Delivery pipeline
+Golden paths->Decisions and opinions
+Templates and modules->Writing software
+Delivery pipeline->Policy checks
+Delivery pipeline->Human review
+Delivery pipeline->Kubernetes
+Writing software->LLM
+LLM->Infra know-how
+Kubernetes->Cloud runtime
+
+note This need was already here. Nobody drew it [0.82, 0.06]
+note The gate the developer felt [0.74, 0.54]
+note No generated file can vouch for itself [0.20, 0.12]

@@ -1,0 +1,69 @@
+title Easy Is Taken (gameplay) 05: who learns first
+style wardley
+
+// Both sides run a sensing engine on the same developers. Vendor sees the asking, the platform sees what happened next.
+anchor Business [0.97, 0.36]
+anchor Developer [0.97, 0.64]
+
+component Trusted running service [0.90, 0.50]
+component Ship a change [0.83, 0.60]
+component Developer portal [0.76, 0.52] (buy)
+component Prompt to production suite [0.79, 0.70] (buy)
+component Encoded business decisions [0.72, 0.16] (build)
+component Prompted config [0.70, 0.72]
+component Internal services [0.64, 0.58] (build)
+component Production gate [0.62, 0.30] (build)
+component Templates [0.60, 0.82] (buy)
+component Agent context [0.56, 0.40] (build)
+component Infra modules [0.54, 0.80] (buy)
+component Vendor guardrails [0.50, 0.56] (buy)
+component Verification at volume [0.50, 0.24] (build)
+component Delivery pipeline [0.46, 0.66] (build)
+component Outcome signal [0.40, 0.26] (build)
+component Writing software [0.38, 0.80] (buy)
+component Cloud access [0.33, 0.76] (buy)
+component Prompt metadata [0.30, 0.34] (outsource)
+component Kubernetes [0.28, 0.74] inertia (build)
+component Foundation models [0.23, 0.80] (outsource)
+component Serverless [0.20, 0.86] (outsource)
+component Compute [0.10, 0.90] (outsource)
+
+Business->Trusted running service
+Business->Encoded business decisions
+Trusted running service->Ship a change
+Developer->Ship a change
+Ship a change->Developer portal
+Ship a change->Prompted config
+Ship a change->Prompt to production suite
+Ship a change->Internal services
+Developer portal->Templates
+Encoded business decisions->Production gate
+Encoded business decisions->Agent context
+Prompted config->Production gate
+Prompted config->Agent context
+Prompted config->Writing software
+Internal services->Delivery pipeline
+Internal services->Outcome signal
+Prompt to production suite->Agent context
+Prompt to production suite->Prompt metadata
+Prompt to production suite->Writing software
+Prompt to production suite->Vendor guardrails
+Prompt to production suite->Serverless
+Prompt to production suite->Cloud access
+Production gate->Vendor guardrails
+Production gate->Verification at volume
+Production gate->Delivery pipeline
+Production gate->Cloud access
+Production gate->Outcome signal
+Agent context->Prompt metadata
+Templates->Writing software
+Infra modules->Writing software
+Writing software->Foundation models
+Delivery pipeline->Kubernetes
+Delivery pipeline->Cloud access
+Kubernetes->Compute
+Foundation models->Compute
+Serverless->Compute
+
+note The vendor sees the asking [0.26, 0.14]
+note You see what happened next [0.44, 0.12]

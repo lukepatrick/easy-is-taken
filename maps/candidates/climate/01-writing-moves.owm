@@ -1,0 +1,65 @@
+title Easy Is Taken: climate 01, writing moves
+style wardley
+
+// The supposition: the activity of writing software jumps toward utility.
+// This is my supposition in mapping terms, attributed to no source.
+// A second route appears: Developer to Coding agent, around the portal.
+
+anchor Business [0.97, 0.32]
+anchor Developer [0.97, 0.62]
+
+component Trusted running service [0.90, 0.55]
+component Developer portal [0.82, 0.50] (build)
+component Coding agent [0.78, 0.60] (buy)
+component Golden paths [0.74, 0.44] (build)
+component Service templates [0.64, 0.50] (build)
+component IaC modules [0.60, 0.56] (build)
+component Pipeline definitions [0.56, 0.62] (build)
+component Gated code review [0.51, 0.66]
+component Writing software [0.47, 0.33] (build)
+component Delivery pipeline [0.42, 0.72] (buy)
+component Policy checks [0.37, 0.50] (build)
+component Version control [0.35, 0.92] (buy)
+component System understanding [0.34, 0.30]
+component Business decisions [0.33, 0.18]
+component LLM [0.30, 0.68] (buy)
+component Observability [0.25, 0.64] (buy)
+component Container orchestration [0.20, 0.70] (buy)
+component Runtime [0.13, 0.82] (outsource)
+component Compute [0.05, 0.94] (outsource)
+
+evolve Writing software 0.85
+evolve LLM 0.82
+
+Business->Trusted running service
+Developer->Trusted running service
+Developer->Developer portal
+Business->Business decisions
+Trusted running service->Golden paths
+Trusted running service->Gated code review
+Trusted running service->Writing software
+Trusted running service->Observability
+Developer portal->Golden paths
+Golden paths->Service templates
+Golden paths->IaC modules
+Golden paths->Pipeline definitions
+Golden paths->Business decisions
+Service templates->Writing software
+IaC modules->Writing software
+Pipeline definitions->Writing software
+Pipeline definitions->Delivery pipeline
+Gated code review->System understanding
+Delivery pipeline->Policy checks
+Delivery pipeline->Version control
+Delivery pipeline->Container orchestration
+Policy checks->Business decisions
+Observability->Container orchestration
+Container orchestration->Runtime
+Runtime->Compute
+LLM->Compute
+Developer->Coding agent
+Coding agent->Writing software
+Writing software->LLM
+
+note Suppose this has moved [0.53, 0.12]
+note A route that skips the portal [0.88, 0.76]

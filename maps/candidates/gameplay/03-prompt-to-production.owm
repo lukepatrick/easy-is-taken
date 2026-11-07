@@ -1,0 +1,59 @@
+title Easy Is Taken (gameplay) 03: the vendor sells the door too
+style wardley
+
+// Vendors and hyperscalers reply. One product from prompt to runtime, with guardrails included.
+anchor Business [0.97, 0.36]
+anchor Developer [0.97, 0.64]
+
+component Trusted running service [0.90, 0.50]
+component Ship a change [0.83, 0.60]
+component Developer portal [0.76, 0.52] (build)
+component Prompt to production suite [0.79, 0.70] (buy)
+component Golden path [0.70, 0.44] inertia (build)
+component Prompted config [0.70, 0.72]
+component Production gate [0.62, 0.30] (build)
+component Templates [0.60, 0.82] (buy)
+component Infra modules [0.54, 0.80] (buy)
+component Vendor guardrails [0.50, 0.56] (buy)
+component Verification at volume [0.50, 0.24] (build)
+component Delivery pipeline [0.46, 0.66] (build)
+component Writing software [0.38, 0.80] (buy)
+component Cloud access [0.33, 0.76] (buy)
+component Kubernetes [0.28, 0.74] inertia (build)
+component Foundation models [0.23, 0.80] (outsource)
+component Serverless [0.20, 0.86] (outsource)
+component Compute [0.10, 0.90] (outsource)
+
+evolve Production gate 0.58
+evolve Verification at volume 0.50
+
+Business->Trusted running service
+Trusted running service->Ship a change
+Developer->Ship a change
+Ship a change->Developer portal
+Ship a change->Prompted config
+Ship a change->Prompt to production suite
+Developer portal->Golden path
+Golden path->Templates
+Golden path->Infra modules
+Golden path->Production gate
+Prompted config->Production gate
+Prompted config->Writing software
+Prompt to production suite->Writing software
+Prompt to production suite->Vendor guardrails
+Prompt to production suite->Serverless
+Prompt to production suite->Cloud access
+Production gate->Verification at volume
+Production gate->Delivery pipeline
+Production gate->Cloud access
+Templates->Writing software
+Infra modules->Writing software
+Writing software->Foundation models
+Delivery pipeline->Kubernetes
+Delivery pipeline->Cloud access
+Kubernetes->Compute
+Foundation models->Compute
+Serverless->Compute
+
+note Vendor defaults become the path [0.87, 0.66]
+note No config to keep [0.50, 0.80]

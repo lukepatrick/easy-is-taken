@@ -1,0 +1,80 @@
+// Dissent scenario: writing software as faster craft. Placements are judgment.
+title Faster craft 02 - the utility test
+style wardley
+
+anchor Business [0.98, 0.30]
+anchor Developer [0.98, 0.62]
+
+component Trusted running service [0.90, 0.52]
+component Internal platform [0.82, 0.46] (build)
+component Writing software [0.74, 0.33]
+component Operating over time [0.72, 0.54]
+component Wrangling agents [0.66, 0.24]
+component Writing infra config [0.62, 0.37]
+component Testing and scanning [0.62, 0.60]
+component Understanding the problem [0.60, 0.18]
+component Golden paths [0.58, 0.50] (build)
+component Code review as a gate [0.56, 0.76]
+component Verifying intent [0.52, 0.22]
+component Policy and access [0.50, 0.44]
+component Translating intent to code [0.50, 0.66]
+component Repair loops [0.46, 0.34]
+component System understanding [0.44, 0.12]
+component Templates and modules [0.44, 0.56] (build)
+component Environments [0.40, 0.38]
+component Observability [0.40, 0.66] (buy)
+component Business decisions and opinions [0.36, 0.22]
+component Delivery core [0.34, 0.74] (buy)
+component Conversational programming tools [0.30, 0.56] (buy)
+component Generated drafts [0.30, 0.86]
+component Continuous delivery practice [0.26, 0.62]
+component Kubernetes and runtime [0.22, 0.80] (buy)
+component LLM models [0.14, 0.72]
+component Cloud compute [0.10, 0.94] (outsource)
+
+Business->Trusted running service
+Developer->Internal platform
+Developer->Writing software
+Trusted running service->Writing software
+Trusted running service->Operating over time
+Trusted running service->Testing and scanning
+Internal platform->Golden paths
+Internal platform->Policy and access
+Internal platform->Environments
+Internal platform->Observability
+Internal platform->Delivery core
+Writing software->Understanding the problem
+Writing software->Translating intent to code
+Writing software->Writing infra config
+Writing infra config->Templates and modules
+Golden paths->Templates and modules
+Golden paths->Business decisions and opinions
+Policy and access->Business decisions and opinions
+Understanding the problem->Business decisions and opinions
+Testing and scanning->Code review as a gate
+Testing and scanning->Environments
+Operating over time->Observability
+Operating over time->Kubernetes and runtime
+Environments->Kubernetes and runtime
+Delivery core->Continuous delivery practice
+Delivery core->Kubernetes and runtime
+Kubernetes and runtime->Cloud compute
+Translating intent to code->Conversational programming tools
+Translating intent to code->Generated drafts
+Conversational programming tools->LLM models
+Generated drafts->LLM models
+Writing software->Wrangling agents
+Wrangling agents->Conversational programming tools
+Wrangling agents->Repair loops
+Trusted running service->Verifying intent
+Verifying intent->System understanding
+Verifying intent->Business decisions and opinions
+Testing and scanning->Repair loops
+Repair loops->Conversational programming tools
+
+evolve LLM models 0.85
+evolve Conversational programming tools 0.78
+
+note Would you stop checking a utility like this [0.87, 0.14]
+note New work a utility would not create [0.58, 0.06]
+note Same request, different organization, different right answer [0.30, 0.14]

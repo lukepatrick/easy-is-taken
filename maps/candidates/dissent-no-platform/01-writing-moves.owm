@@ -1,0 +1,52 @@
+title 01 Suppose writing infra config becomes a utility
+style wardley
+// Supposition, my reading. No source states it.
+// Rule from here on: the model never writes a bad line.
+
+anchor Developer [0.97, 0.50]
+
+component Running service [0.89, 0.58]
+component Coding agent [0.82, 0.64] (buy)
+component Internal platform [0.78, 0.43] (build) inertia
+component Developer portal [0.67, 0.47] (build)
+component Golden path templates [0.62, 0.33] (build) inertia
+component Reusable IaC modules [0.57, 0.54] (build) inertia
+component Deployment pipeline [0.62, 0.70] (buy)
+component Change review [0.48, 0.58]
+component Policy checks [0.42, 0.50] (buy)
+component Writing infra config [0.45, 0.35]
+component Organizational opinion [0.46, 0.18]
+component Shared infra state [0.34, 0.44]
+component Identity and access [0.30, 0.78] (buy)
+component Container orchestration [0.28, 0.68] (buy)
+component Managed runtime [0.22, 0.85] (outsource)
+component LLM [0.18, 0.74] (outsource)
+component Compute [0.08, 0.95] (outsource)
+
+evolve Writing infra config 0.82
+evolve LLM 0.86
+
+Developer->Running service
+Developer->Coding agent
+Running service->Internal platform
+Internal platform->Developer portal
+Internal platform->Golden path templates
+Internal platform->Reusable IaC modules
+Internal platform->Deployment pipeline
+Golden path templates->Organizational opinion
+Golden path templates->Writing infra config
+Reusable IaC modules->Writing infra config
+Coding agent->Writing infra config
+Writing infra config->LLM
+Deployment pipeline->Change review
+Deployment pipeline->Policy checks
+Deployment pipeline->Shared infra state
+Deployment pipeline->Identity and access
+Deployment pipeline->Container orchestration
+Deployment pipeline->Managed runtime
+Container orchestration->Compute
+Managed runtime->Compute
+LLM->Compute
+
+note Suppose. Nobody in the sources says this [0.97, 0.76]
+note The thing the platform saved has lost its price [0.26, 0.05]

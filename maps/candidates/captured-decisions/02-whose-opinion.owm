@@ -1,0 +1,52 @@
+title Easy opinions are taken too
+style wardley
+
+anchor Developer [0.96, 0.40]
+
+component Trusted running service [0.88, 0.50]
+component Self-service portal [0.79, 0.56]
+component Golden path [0.71, 0.33] inertia
+component Coding agent [0.70, 0.58]
+component Templates and modules [0.62, 0.80]
+component Regulated opinion [0.62, 0.60]
+component Business-specific decisions [0.56, 0.20]
+component Delivery pipeline [0.54, 0.68]
+component Common practice opinion [0.50, 0.86]
+component Writing infra config [0.47, 0.72]
+component Policy checks [0.44, 0.52]
+component Writing software [0.38, 0.76]
+component LLM defaults [0.31, 0.86]
+component Kubernetes [0.30, 0.66]
+component LLMs [0.24, 0.76]
+component Runtime [0.17, 0.82] (outsource)
+component Compute [0.08, 0.93] (outsource)
+
+Developer->Trusted running service
+Developer->Coding agent
+Trusted running service->Self-service portal
+Trusted running service->Writing software
+Self-service portal->Golden path
+Self-service portal->Delivery pipeline
+Golden path->Templates and modules
+Golden path->Common practice opinion
+Golden path->Regulated opinion
+Golden path->Business-specific decisions
+Coding agent->Writing infra config
+Coding agent->Writing software
+Coding agent->Delivery pipeline
+Coding agent->LLM defaults
+LLM defaults->Common practice opinion
+LLM defaults->LLMs
+Delivery pipeline->Policy checks
+Delivery pipeline->Kubernetes
+Policy checks->Regulated opinion
+Policy checks->Business-specific decisions
+Writing infra config->Writing software
+Writing software->LLMs
+Kubernetes->Runtime
+Runtime->Compute
+LLMs->Compute
+
+note How much of a golden path sits here? Unmeasured [0.90, 0.68]
+note Would a fresh model give you this end unprompted? [0.95, 0.64]
+note This end is yours [0.50, 0.14]

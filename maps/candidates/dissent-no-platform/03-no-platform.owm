@@ -1,0 +1,45 @@
+title 03 Suppose this map is complete
+style wardley
+// The strongest form of the case. No platform component, and nothing is broken.
+// Supposition continues. Rule: the model never writes a bad line.
+
+anchor Developer [0.97, 0.50]
+
+component Running service [0.89, 0.58]
+component Coding agent [0.78, 0.64] (buy)
+component Generated infra config [0.66, 0.84]
+component Agent instruction file [0.65, 0.46]
+component Organizational opinion [0.53, 0.30]
+component Deployment pipeline [0.46, 0.70] (buy)
+component Writing infra config [0.56, 0.82]
+component Policy checks [0.36, 0.50] (buy)
+component Model defaults [0.41, 0.76]
+component Shared infra state [0.28, 0.44] (buy)
+component LLM [0.31, 0.86] (outsource)
+component Identity and access [0.24, 0.78] (buy)
+component Managed runtime [0.17, 0.85] (outsource)
+component Container orchestration [0.12, 0.68] (outsource)
+component Compute [0.06, 0.95] (outsource)
+
+Developer->Running service
+Developer->Coding agent
+Running service->Coding agent
+Coding agent->Agent instruction file
+Coding agent->Generated infra config
+Agent instruction file->Organizational opinion
+Generated infra config->Writing infra config
+Generated infra config->Deployment pipeline
+Writing infra config->Model defaults
+Writing infra config->LLM
+Model defaults->LLM
+Deployment pipeline->Policy checks
+Deployment pipeline->Shared infra state
+Deployment pipeline->Identity and access
+Deployment pipeline->Managed runtime
+Managed runtime->Container orchestration
+Container orchestration->Compute
+LLM->Compute
+
+note Suppose [0.97, 0.76]
+note Opinion now fits in a file the agent reads [0.72, 0.08]
+note Which line fails first [0.16, 0.30]

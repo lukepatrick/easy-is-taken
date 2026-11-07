@@ -1,0 +1,74 @@
+title Easy Is Taken: climate 04, inertia
+style wardley
+
+// What worked pushes back. Each bar marks past success defending a position.
+// The horizontal gap from Hand-built modules to Generated config is evolutionary debt made visible.
+
+anchor Business [0.97, 0.32]
+anchor Developer [0.97, 0.62]
+
+component Trusted running service [0.90, 0.55]
+component Developer portal [0.82, 0.50] inertia (build)
+component Coding agent [0.78, 0.60] (buy)
+component Golden paths [0.74, 0.44] inertia (build)
+component Encoded opinion [0.68, 0.24] (build)
+component Hand-built modules [0.64, 0.56] inertia (build)
+component Generated config [0.60, 0.86]
+component Maintaining services [0.55, 0.30] (build)
+component Gated code review [0.51, 0.66] inertia
+component Writing software [0.47, 0.85] (outsource)
+component Delivery pipeline [0.42, 0.78] (buy)
+component Policy checks [0.37, 0.58] (build)
+component Version control [0.35, 0.92] (buy)
+component System understanding [0.34, 0.30]
+component Business decisions [0.33, 0.18]
+component LLM [0.30, 0.78] (buy)
+component Drift control [0.29, 0.46] (build)
+component Observability [0.25, 0.70] (buy)
+component Container orchestration [0.20, 0.70] inertia (buy)
+component Runtime [0.13, 0.82] (outsource)
+component Compute [0.05, 0.94] (outsource)
+
+evolve Developer portal 0.72
+evolve Golden paths 0.80
+evolve Hand-built modules 0.84
+evolve Container orchestration 0.84
+evolve Delivery pipeline 0.86
+evolve Policy checks 0.72
+
+Business->Trusted running service
+Developer->Trusted running service
+Developer->Developer portal
+Business->Business decisions
+Trusted running service->Golden paths
+Trusted running service->Gated code review
+Trusted running service->Writing software
+Trusted running service->Observability
+Developer portal->Golden paths
+Gated code review->System understanding
+Delivery pipeline->Policy checks
+Delivery pipeline->Version control
+Delivery pipeline->Container orchestration
+Policy checks->Business decisions
+Observability->Container orchestration
+Container orchestration->Runtime
+Runtime->Compute
+LLM->Compute
+Developer->Coding agent
+Coding agent->Writing software
+Writing software->LLM
+Golden paths->Encoded opinion
+Encoded opinion->Business decisions
+Coding agent->Encoded opinion
+Golden paths->Generated config
+Coding agent->Generated config
+Generated config->Writing software
+Generated config->Delivery pipeline
+Trusted running service->Maintaining services
+Maintaining services->System understanding
+Maintaining services->Drift control
+Golden paths->Hand-built modules
+Hand-built modules->Generated config
+
+note Red Queen: no choice over adopting, inertia anyway [0.93, 0.80]
+note Debt shows up as this distance [0.67, 0.70]

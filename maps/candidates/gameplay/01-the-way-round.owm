@@ -1,0 +1,56 @@
+title Easy Is Taken (gameplay) 01: suppose writing is a utility
+style wardley
+
+// Climate, no player has moved yet. The supposition is my reading. No source states it.
+anchor Business [0.97, 0.36]
+anchor Developer [0.97, 0.64]
+
+component Trusted running service [0.90, 0.50]
+component Ship a change [0.83, 0.60]
+component Developer portal [0.76, 0.52] (build)
+component Golden path [0.70, 0.44] inertia (build)
+component Roll your own [0.70, 0.20]
+component Change review [0.63, 0.34]
+component Templates [0.60, 0.50] (build)
+component Infra modules [0.54, 0.47] (build)
+component Policy checks [0.50, 0.36] (build)
+component Delivery pipeline [0.46, 0.66] (build)
+component Writing software [0.38, 0.30] (build)
+component Cloud access [0.33, 0.76] (buy)
+component Kubernetes [0.28, 0.74] (build)
+component Foundation models [0.23, 0.66] (outsource)
+component Serverless [0.20, 0.86] (outsource)
+component Compute [0.10, 0.90] (outsource)
+
+evolve Writing software 0.80
+evolve Foundation models 0.82
+evolve Templates 0.82
+evolve Infra modules 0.80
+evolve Roll your own->Prompted config 0.72
+
+Business->Trusted running service
+Trusted running service->Ship a change
+Developer->Ship a change
+Ship a change->Developer portal
+Ship a change->Roll your own
+Developer portal->Golden path
+Golden path->Templates
+Golden path->Infra modules
+Golden path->Policy checks
+Golden path->Change review
+Golden path->Delivery pipeline
+Roll your own->Change review
+Roll your own->Writing software
+Roll your own->Cloud access
+Templates->Writing software
+Infra modules->Writing software
+Writing software->Foundation models
+Delivery pipeline->Kubernetes
+Delivery pipeline->Cloud access
+Kubernetes->Compute
+Foundation models->Compute
+Serverless->Compute
+
+note Suppose. No source says this [0.30, 0.20]
+note The way round is now cheap [0.76, 0.14]
+note More changes arrive [0.66, 0.12]

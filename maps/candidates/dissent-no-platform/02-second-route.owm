@@ -1,0 +1,55 @@
+title 02 A second route opens around the platform
+style wardley
+// Supposition continues. Templates and modules are substituted, not evolved.
+// Rule: the model never writes a bad line.
+
+anchor Developer [0.97, 0.50]
+
+component Running service [0.89, 0.58]
+component Coding agent [0.80, 0.64] (buy)
+component Internal platform [0.76, 0.43] (build) inertia
+component Developer portal [0.67, 0.47] (build) inertia
+component Golden path templates [0.60, 0.33] (build) inertia
+component Reusable IaC modules [0.55, 0.54] (build) inertia
+component Generated infra config [0.66, 0.84]
+component Deployment pipeline [0.46, 0.70] (buy)
+component Change review [0.37, 0.58]
+component Policy checks [0.33, 0.50] (buy)
+component Writing infra config [0.56, 0.82]
+component Model defaults [0.41, 0.76]
+component Organizational opinion [0.44, 0.18]
+component Shared infra state [0.27, 0.44]
+component Identity and access [0.24, 0.78] (buy)
+component Container orchestration [0.20, 0.68] (buy)
+component Managed runtime [0.17, 0.85] (outsource)
+component LLM [0.31, 0.86] (outsource)
+component Compute [0.08, 0.95] (outsource)
+
+Developer->Running service
+Developer->Coding agent
+Running service->Internal platform
+Running service->Coding agent
+Internal platform->Developer portal
+Internal platform->Golden path templates
+Internal platform->Reusable IaC modules
+Internal platform->Deployment pipeline
+Golden path templates->Organizational opinion
+Coding agent->Generated infra config
+Generated infra config->Writing infra config
+Generated infra config->Deployment pipeline
+Writing infra config->Model defaults
+Writing infra config->LLM
+Model defaults->LLM
+Deployment pipeline->Change review
+Deployment pipeline->Policy checks
+Deployment pipeline->Shared infra state
+Deployment pipeline->Identity and access
+Deployment pipeline->Container orchestration
+Deployment pipeline->Managed runtime
+Container orchestration->Compute
+Managed runtime->Compute
+LLM->Compute
+
+note Suppose [0.97, 0.76]
+note Templates lose their writer. Opinion stays stranded with them [0.26, 0.05]
+note The model has defaults of its own [0.50, 0.74]

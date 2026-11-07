@@ -1,0 +1,76 @@
+title 05 The same argument, applied to what was left
+style wardley
+// Same supposition, same rule. The arrows are possibilities and carry no timing.
+// This map is deliberately left unresolved.
+
+anchor Developer [0.97, 0.50]
+anchor Organization [0.97, 0.22]
+
+component Running service [0.89, 0.58]
+component Answerable change [0.89, 0.27]
+component Decision ownership [0.80, 0.11]
+component Coding agent [0.78, 0.64] (buy)
+component Binding check [0.71, 0.34]
+component Deciding what not to run [0.69, 0.14]
+component Generated infra config [0.66, 0.84]
+component Agent instruction file [0.65, 0.46]
+component Agent vendor control plane [0.60, 0.62] (buy)
+component Cross-service contracts [0.60, 0.21]
+component Organizational opinion [0.53, 0.30]
+component Deployment pipeline [0.46, 0.70] (buy)
+component Writing infra config [0.56, 0.82]
+component Recovery from failure [0.46, 0.26]
+component Policy checks [0.36, 0.50] (buy)
+component Model defaults [0.41, 0.76]
+component System understanding [0.35, 0.16]
+component Shared infra state [0.28, 0.44] (buy)
+component LLM [0.31, 0.86] (outsource)
+component Identity and access [0.24, 0.78] (buy)
+component Managed runtime [0.17, 0.85] (outsource)
+component Container orchestration [0.12, 0.68] (outsource)
+component Compute [0.06, 0.95] (outsource)
+
+evolve Binding check 0.60
+evolve Cross-service contracts 0.46
+evolve Recovery from failure 0.50
+evolve Policy checks 0.78
+evolve Agent instruction file 0.66
+
+Developer->Running service
+Developer->Coding agent
+Organization->Running service
+Organization->Answerable change
+Organization->Deciding what not to run
+Running service->Coding agent
+Answerable change->Decision ownership
+Answerable change->Binding check
+Answerable change->Cross-service contracts
+Answerable change->Recovery from failure
+Decision ownership->Organizational opinion
+Binding check->Organizational opinion
+Binding check->Agent vendor control plane
+Coding agent->Agent instruction file
+Coding agent->Generated infra config
+Coding agent->Agent vendor control plane
+Agent instruction file->Organizational opinion
+Agent vendor control plane->Model defaults
+Agent vendor control plane->Deployment pipeline
+Agent vendor control plane->Policy checks
+Cross-service contracts->Shared infra state
+Recovery from failure->System understanding
+Recovery from failure->Shared infra state
+Generated infra config->Writing infra config
+Writing infra config->Model defaults
+Writing infra config->LLM
+Model defaults->LLM
+Deployment pipeline->Shared infra state
+Deployment pipeline->Identity and access
+Deployment pipeline->Managed runtime
+Managed runtime->Container orchestration
+Container orchestration->Compute
+LLM->Compute
+
+note Suppose [0.97, 0.80]
+note Bought: your check and your defaults share a vendor [0.53, 0.50]
+note No arrow yet. Can these be bought [0.03, 0.02]
+note Is this a platform, or did we keep the word [0.24, 0.02]

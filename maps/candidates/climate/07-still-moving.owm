@@ -1,0 +1,108 @@
+title Easy Is Taken: climate 07, still moving
+style wardley
+
+// No resting place. Part of today's opinion is generic and starts to move right.
+// The platform is itself software, so it now depends on the utility too.
+// This frame ends on open arrows on purpose. It answers nothing.
+
+anchor Business [0.97, 0.32]
+anchor Developer [0.97, 0.62]
+
+component Trusted running service [0.90, 0.55]
+component Contextual dev tools [0.87, 0.12] (build)
+component Developer portal [0.82, 0.50] inertia (build)
+component Coding agent [0.78, 0.60] (buy)
+component Golden paths [0.74, 0.44] inertia (build)
+component Choosing per component [0.74, 0.14]
+component Encoded opinion [0.68, 0.24] (build)
+component Prompt signal sensing [0.67, 0.06] (build)
+component Hand-built modules [0.64, 0.56] inertia (build)
+component Generated config [0.60, 0.86]
+component Managing agent swarms [0.60, 0.10]
+component Common policy packs [0.58, 0.54] (buy)
+component Maintaining services [0.55, 0.30] (build)
+component Placing human decisions [0.52, 0.14]
+component Gated code review [0.51, 0.66] inertia
+component Writing software [0.47, 0.85] (outsource)
+component Verification beyond reading [0.44, 0.12]
+component Delivery pipeline [0.42, 0.78] (buy)
+component Decision tests [0.39, 0.05] (build)
+component Policy checks [0.37, 0.58] (build)
+component Version control [0.35, 0.92] (buy)
+component System understanding [0.34, 0.30]
+component Business decisions [0.33, 0.18]
+component LLM [0.30, 0.78] (buy)
+component Drift control [0.29, 0.46] (build)
+component Fleet comprehension [0.28, 0.12] (build)
+component Observability [0.25, 0.70] (buy)
+component LLM default values [0.22, 0.52]
+component Container orchestration [0.20, 0.70] inertia (buy)
+component Black start for fleets [0.15, 0.08] (build)
+component Runtime [0.13, 0.82] (outsource)
+component Compute [0.05, 0.94] (outsource)
+
+evolve Encoded opinion 0.42
+evolve Common policy packs 0.78
+evolve Contextual dev tools 0.42
+evolve Prompt signal sensing 0.36
+evolve Decision tests 0.34
+evolve Fleet comprehension 0.38
+evolve Developer portal 0.72
+
+Business->Trusted running service
+Developer->Trusted running service
+Developer->Developer portal
+Business->Business decisions
+Trusted running service->Golden paths
+Trusted running service->Gated code review
+Trusted running service->Writing software
+Trusted running service->Observability
+Developer portal->Golden paths
+Gated code review->System understanding
+Delivery pipeline->Policy checks
+Delivery pipeline->Version control
+Delivery pipeline->Container orchestration
+Policy checks->Business decisions
+Observability->Container orchestration
+Container orchestration->Runtime
+Runtime->Compute
+LLM->Compute
+Developer->Coding agent
+Coding agent->Writing software
+Writing software->LLM
+Golden paths->Encoded opinion
+Encoded opinion->Business decisions
+Coding agent->Encoded opinion
+Golden paths->Generated config
+Coding agent->Generated config
+Generated config->Writing software
+Generated config->Delivery pipeline
+Trusted running service->Maintaining services
+Maintaining services->System understanding
+Maintaining services->Drift control
+Golden paths->Hand-built modules
+Hand-built modules->Generated config
+Trusted running service->Choosing per component
+Coding agent->Managing agent swarms
+Encoded opinion->Placing human decisions
+Trusted running service->Verification beyond reading
+Verification beyond reading->System understanding
+Developer->Contextual dev tools
+Contextual dev tools->Encoded opinion
+Contextual dev tools->Writing software
+Coding agent->Prompt signal sensing
+Verification beyond reading->Decision tests
+Encoded opinion->Decision tests
+Decision tests->Business decisions
+System understanding->Fleet comprehension
+Fleet comprehension->Observability
+Fleet comprehension->Black start for fleets
+Black start for fleets->Runtime
+Encoded opinion->Common policy packs
+Coding agent->Common policy packs
+LLM->LLM default values
+Developer portal->Writing software
+
+note Which part of this is only yours [0.76, 0.30]
+note Whose defaults win [0.26, 0.42]
+note The platform is written here too [0.48, 0.60]

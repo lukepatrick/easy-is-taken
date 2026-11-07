@@ -1,0 +1,54 @@
+title Easy Is Taken - user-need 02 - who is asking
+style wardley
+
+anchor Agent as user [0.96, 0.36]
+anchor Developer [0.96, 0.55]
+anchor Anyone with a prompt [0.96, 0.76]
+
+component Usable context [0.84, 0.36]
+component Ship a change [0.88, 0.55]
+component Get it written [0.80, 0.78]
+component Get it through [0.80, 0.50]
+
+component Internal platform [0.72, 0.40] (build)
+component Self-service portal [0.64, 0.50] (buy)
+component Golden paths [0.56, 0.35] (build)
+component Templates and modules [0.46, 0.84] (build) inertia
+component Delivery pipeline [0.44, 0.71] (buy)
+component Policy checks [0.36, 0.48]
+component Human review [0.34, 0.62] inertia
+
+component Coding agent [0.68, 0.66] (buy)
+
+component Writing software [0.30, 0.78]
+component Kubernetes [0.26, 0.68] (buy)
+component LLM [0.18, 0.76] (outsource)
+component Infra know-how [0.14, 0.66]
+component Cloud runtime [0.06, 0.92] (outsource)
+
+Agent as user->Usable context
+Developer->Ship a change
+Anyone with a prompt->Get it written
+Ship a change->Get it written
+Ship a change->Get it through
+Get it written->Coding agent
+Get it through->Internal platform
+Usable context->Internal platform
+Coding agent->Writing software
+Coding agent->Cloud runtime
+Internal platform->Self-service portal
+Self-service portal->Golden paths
+Golden paths->Templates and modules
+Golden paths->Delivery pipeline
+Templates and modules->Writing software
+Delivery pipeline->Policy checks
+Delivery pipeline->Human review
+Delivery pipeline->Kubernetes
+Writing software->LLM
+LLM->Infra know-how
+Kubernetes->Cloud runtime
+
+note No edge to Get it through [0.88, 0.80]
+note Has needs, or carries someone else's? [0.91, 0.14]
+note The same thing drawn twice [0.72, 0.74]
+note More changes, same reviewers [0.29, 0.52]
