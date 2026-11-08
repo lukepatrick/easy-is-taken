@@ -1,0 +1,25 @@
+{
+  "name": "easy-is-taken-deck",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "frames": "node build/build.mjs",
+    "dev": "npm run frames && slidev --open false",
+    "build": "npm run frames && slidev build --base ./ --out dist",
+    "serve": "cd dist && python3 -m http.server 8765 --bind 127.0.0.1",
+    "export:pdf": "npm run frames && TMPDIR=/tmp slidev export slides.md --format pdf --output easy-is-taken.pdf --with-clicks --executable-path /usr/bin/google-chrome --timeout 60000",
+    "shoot": "rm -f screenshots/*.png && node build/shoot.mjs http://127.0.0.1:8765 screenshots \"1 2 3 4:0 4:1 5 6 7 8 9 10:0 10:1 10:2 10:3 11:0 11:1 11:2 11:3 12\" --offline",
+    "fallback": "node build/make-fallback.mjs"
+  },
+  "dependencies": {
+    "@fontsource/atkinson-hyperlegible-mono": "5.3.0",
+    "@fontsource/atkinson-hyperlegible-next": "5.3.0",
+    "@slidev/cli": "53.1.0",
+    "@slidev/theme-default": "0.25.0"
+  },
+  "devDependencies": {
+    "opentype.js": "1.3.4",
+    "playwright-chromium": "1.65.0",
+    "qrcode": "1.5.4"
+  }
+}

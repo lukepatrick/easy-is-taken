@@ -1,0 +1,32 @@
+title Climate, frame 2
+style plain
+evolution Genesis->Custom-Built->Product->Commodity
+
+// Climate worked example, frame 2 of 4. The move is my supposition, with no source behind it.
+// "evolve A->B" keeps every link on the original dot, so the move reads as supposed.
+// deck/build/render-map.mjs draws the B dot dashed and keeps A solid with its links.
+// @step 2
+// @headline Suppose writing software moves
+// @question If writing code gets cheap, so does anything priced on the effort to write it, like templates and modules. How much of your platform was priced that way?
+// @highlight Writing software
+
+anchor Team shipping a service [0.96, 0.55]
+
+component Code and config [0.80, 0.45] label [12, -12]
+component Writing software [0.56, 0.33] label [-70, 28]
+component Policy checks [0.44, 0.60] label [12, 18]
+component Golden paths [0.32, 0.42] label [-100, 22]
+component LLM [0.22, 0.66] label [10, 18]
+component Runtime [0.12, 0.84] label [-30, 26]
+component Human gates [0.66, 0.64] label [24, 5]
+
+evolve Writing software->Supposed utility 0.85 label [-60, 28]
+
+Team shipping a service->Code and config
+Code and config->Writing software
+Code and config->Human gates
+Code and config->Policy checks
+Code and config->Runtime
+Writing software->Golden paths
+Writing software->LLM
+Policy checks->Golden paths
