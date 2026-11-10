@@ -33,7 +33,8 @@ export function readOwm(src) {
   const d = {}
   for (const l of src.split('\n')) {
     const m = l.match(/^\/\/ @(\w+)\s+(.*)$/)
-    if (m) d[m[1]] = m[2].trim()
+    if (m && m[1] === 'side') { const [name, k] = m[2].split('=').map(t => t.trim()); (d.sides ??= {})[name] = k } // @side Name = W
+    else if (m) d[m[1]] = m[2].trim()
   }
   return { map, directives: d }
 }
@@ -41,8 +42,9 @@ export function readOwm(src) {
 // Evolution stage boundaries, matching cli-owm and OnlineWardleyMaps (3.5, 8 and 14 twentieths).
 export const STAGES = [0, 0.175, 0.4, 0.7]
 
-export function geometry(width, height) {
-  const left = 76, right = width - 40, top = 44, axisY = height - 64
+// margins: override for the small maps on the endings slide, which carry no axis text.
+export function geometry(width, height, m = {}) {
+  const left = m.left ?? 76, right = width - (m.right ?? 40), top = m.top ?? 44, axisY = height - (m.bottom ?? 64)
   return {
     width, height, left, right, top, axisY,
     x: m => left + m * (right - left),
@@ -50,16 +52,18 @@ export function geometry(width, height) {
   }
 }
 
-export function axes(g, stageNames, { sideLabel = 'Closer to the user' } = {}) {
+export function axes(g, stageNames, { sideLabel = 'Closer to the user', bare = false } = {}) {
   const o = []
   const lh = FONT.small
+  const y0 = bare ? 2 : g.top - 30
   for (const s of STAGES.slice(1)) {
     const x = g.x(s)
-    o.push(`<line x1="${x}" y1="${g.top - 30}" x2="${x}" y2="${g.axisY}" stroke="${C.grid}" stroke-width="2" stroke-dasharray="8 8"/>`)
+    o.push(`<line x1="${x}" y1="${y0}" x2="${x}" y2="${g.axisY}" stroke="${C.grid}" stroke-width="2" stroke-dasharray="8 8"/>`)
   }
-  o.push(`<line x1="${g.left}" y1="${g.top - 30}" x2="${g.left}" y2="${g.axisY}" stroke="${C.ink}" stroke-width="3"/>`)
+  o.push(`<line x1="${g.left}" y1="${y0}" x2="${g.left}" y2="${g.axisY}" stroke="${C.ink}" stroke-width="3"/>`)
   o.push(`<line x1="${g.left}" y1="${g.axisY}" x2="${g.right - 18}" y2="${g.axisY}" stroke="${C.ink}" stroke-width="3"/>`)
   o.push(`<polygon points="${g.right},${g.axisY} ${g.right - 24},${g.axisY - 11} ${g.right - 24},${g.axisY + 11}" fill="${C.ink}"/>`)
+  if (bare) return o.join('\n') // lines only: no stage names, no side label
   STAGES.forEach((s, i) => {
     o.push(`<text class="axis" x="${g.x(s) + 10}" y="${g.axisY + lh + 4}" font-size="${lh}">${esc(stageNames[i])}</text>`)
   })
@@ -125,8 +129,15 @@ function candidates(item) {
  * Greedy placement plus a few rounds of local repair.
  * items: [{id, text, x, y, r, weight}], obstacles: {segments, boxes, dots}, bounds: box.
  */
-export function placeLabels(items, { segments = [], boxes = [], dots = [], bounds }) {
-  const cands = items.map(candidates)
+export function placeLabels(items, { segments = [], boxes = [], dots = [], bounds, clamp = false }) {
+  // clamp: slide a label sideways until it is inside the bounds. For small maps, where a long name can't sit beside its dot.
+  const fit = c => {
+    if (!clamp) return c
+    const dx = Math.max(bounds.x - c.box.x, 0) + Math.min(bounds.x + bounds.w - (c.box.x + c.box.w), 0)
+    return dx ? { ...c, tx: c.tx + dx, box: { ...c.box, x: c.box.x + dx }, cost: c.cost + 1 } : c
+  }
+  // An item may pin its side (it.side = 'E', 'W', 'N', 'S'...), for the small maps where the layout is set by hand.
+  const cands = items.map(it => candidates(it).filter(c => !it.side || c.k === it.side).map(fit))
   const cost = (i, c, chosen) => {
     let k = c.cost * 30
     const b = c.box
@@ -199,7 +210,7 @@ const inertiaNote = n => { const b = inertiaBox(n); return { tx: b.x - 6, ty: b.
  * Place labels once for a whole sequence of frames, so no label jumps between frames.
  * scenes: sceneOf() for every frame. reserved: boxes any frame keeps clear.
  */
-export function placeSequence(scenes, g, reserved = []) {
+export function placeSequence(scenes, g, reserved = [], { mini = false, sides = {} } = {}) {
   const nodes = {}, supposed = {}, segs = new Map(), boxes = [...reserved]
   for (const s of scenes) {
     Object.assign(nodes, s.nodes)
@@ -212,22 +223,24 @@ export function placeSequence(scenes, g, reserved = []) {
   }
   for (const n of Object.values(nodes)) {
     if (n.kind === 'anchor') boxes.push(anchorBox(n))
-    if (n.inertia) { boxes.push(inertiaBox(n)); const t = inertiaNote(n); boxes.push(labelBox(INERTIA_NOTE, t.tx, t.ty, 500)) }
+    if (n.inertia) { boxes.push(inertiaBox(n)); if (!mini) { const t = inertiaNote(n); boxes.push(labelBox(INERTIA_NOTE, t.tx, t.ty, 500)) } }
   }
   const dots = [...Object.values(nodes).filter(n => n.kind === 'component'), ...Object.values(supposed)]
     .map(n => ({ x: n.x, y: n.y, r: (n.from ? GHOST_R : DOT_R) + 8 }))
   const items = [
     ...Object.values(nodes).filter(n => n.kind === 'component').map(n => ({ id: n.name, text: n.name, x: n.x, y: n.y, r: DOT_R + 12, weight: 700 })),
-    ...Object.values(supposed).map(e => ({ id: `~${e.name}`, text: e.name, x: e.x, y: e.y, r: GHOST_R + 12, weight: 700 })),
+    ...Object.values(supposed).filter(e => !mini || e.name !== e.from).map(e => ({ id: `~${e.name}`, text: e.name, x: e.x, y: e.y, r: GHOST_R + 12, weight: 700 })),
   ]
-  const bounds = { x: 0, y: 0, w: g.width, h: g.axisY - 2 }
-  return placeLabels(items, { segments: [...segs.values()], boxes, dots, bounds })
+  const bx = mini ? g.left + 8 : 0 // a small map keeps its labels off the side axis
+  const bounds = { x: bx, y: 0, w: g.width - bx, h: g.axisY - 2 }
+  for (const it of items) if (sides[it.id]) it.side = sides[it.id]
+  return placeLabels(items, { segments: [...segs.values()], boxes, dots, bounds, clamp: mini })
 }
 
 /** Draw one frame. highlight: component name. placed: from placeSequence. */
-export function drawFrame(map, g, placed, { highlight } = {}) {
+export function drawFrame(map, g, placed, { highlight, mini = false } = {}) {
   const scene = sceneOf(map, g)
-  const o = [axes(g, map.evolution.map(e => e.line1))]
+  const o = [axes(g, map.evolution.map(e => e.line1), { bare: mini })]
   const isHi = n => n === highlight
   for (const l of scene.links) {
     const s = linkEnds(l)
@@ -240,8 +253,8 @@ export function drawFrame(map, g, placed, { highlight } = {}) {
     o.push(`<line x1="${x1}" y1="${f.y}" x2="${x2 - 22}" y2="${e.y}" stroke="${col}" stroke-width="${hi ? 6 : 4}" stroke-dasharray="16 10"/>`)
     o.push(`<polygon points="${x2},${e.y} ${x2 - 28},${e.y - 13} ${x2 - 28},${e.y + 13}" fill="${col}"/>`)
     o.push(`<circle cx="${e.x}" cy="${e.y}" r="${GHOST_R}" fill="${C.paper}" stroke="${col}" stroke-width="6" stroke-dasharray="10 5"/>`)
-    const p = placed[`~${e.name}`]
-    o.push(`<text class="lbl${hi ? ' hi' : ' ghost'}" x="${p.tx}" y="${p.ty}" font-size="${FONT.label}">${esc(e.name)}</text>`)
+    const p = placed[`~${e.name}`] // a small map leaves an unnamed move unlabeled: the arrow is enough
+    if (p) o.push(`<text class="lbl${hi ? ' hi' : ' ghost'}" x="${p.tx}" y="${p.ty}" font-size="${FONT.label}">${esc(e.name)}</text>`)
   }
   for (const n of Object.values(scene.nodes)) {
     if (n.kind === 'anchor') {
@@ -259,7 +272,7 @@ export function drawFrame(map, g, placed, { highlight } = {}) {
       const b = inertiaBox(n)
       o.push(`<rect x="${b.x}" y="${b.y}" width="${b.w}" height="${b.h}" fill="${hi ? C.accent : C.ink}"/>`)
       const t = inertiaNote(n)
-      o.push(`<text class="lbl note${hi ? ' hi' : ''}" x="${t.tx}" y="${t.ty}" font-size="${FONT.label}">${INERTIA_NOTE}</text>`)
+      if (!mini) o.push(`<text class="lbl note${hi ? ' hi' : ''}" x="${t.tx}" y="${t.ty}" font-size="${FONT.label}">${INERTIA_NOTE}</text>`)
     }
     const p = placed[n.name]
     o.push(`<text class="lbl${hi ? ' hi' : ''}" x="${p.tx}" y="${p.ty}" font-size="${FONT.label}">${esc(n.name)}</text>`)

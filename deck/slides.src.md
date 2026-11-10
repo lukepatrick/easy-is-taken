@@ -121,14 +121,28 @@ clicks: 3
 <!-- @notes 11 -->
 
 ---
+class: landscapes endings
+---
+
+@@strap@@
+
+# What’s left, on six maps
+
+<div class="tiles">
+@@endings@@
+</div>
+
+<!-- @notes 12 -->
+
+---
 class: repo
 ---
 
 <div class="repo-text">
 
-# The repo
+# Thank you!
 
-<div class="sub">Every scenario, map, review and source.</div>
+<div class="sub">Every scenario and every map.</div>
 
 <img class="brand" src="/cnpe-logo.svg" alt="Cloud Native Platform Engineering Community">
 
@@ -145,4 +159,4 @@ class: repo
 <div class="who">Luke Philips</div>
 </div>
 
-<!-- @notes 12 -->
+<!-- @notes 13 -->

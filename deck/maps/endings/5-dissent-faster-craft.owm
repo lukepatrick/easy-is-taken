@@ -1,0 +1,24 @@
+title dissent: faster craft, simplified ending
+style plain
+evolution Genesis->Custom-Built->Product->Commodity
+
+// Simplified from maps/candidates/dissent-faster-craft/05-who-finishes-the-job.owm for the endings slide.
+// Evolution positions are that frame's. Visibility is re-spaced to fit a small tile, and
+// each link stands for a path through components left out here.
+// @scenario dissent: faster craft
+// @highlight Writing software
+// @side Writing software = E
+// @side LLM models = S
+// @side Wrangling agents = E
+
+anchor Developer [0.98, 0.50]
+
+component Writing software [0.76, 0.33]
+component LLM models [0.54, 0.72]
+component Wrangling agents [0.14, 0.24]
+
+evolve LLM models 0.85
+
+Developer->Writing software
+Writing software->LLM models
+Writing software->Wrangling agents

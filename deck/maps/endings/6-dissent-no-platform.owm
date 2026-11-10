@@ -1,0 +1,22 @@
+title dissent: no platform, simplified ending
+style plain
+evolution Genesis->Custom-Built->Product->Commodity
+
+// Simplified from maps/candidates/dissent-no-platform/05-residue-moves.owm for the endings slide.
+// Evolution positions are that frame's. Visibility is re-spaced to fit a small tile, and
+// each link stands for a path through components left out here.
+// @scenario dissent: no platform
+// @highlight Cross-service contracts
+// @side Coding agent = S
+// @side Cross-service contracts = S
+
+anchor Organization [0.98, 0.24]
+anchor Developer [0.98, 0.72]
+
+component Coding agent [0.76, 0.64]
+component Cross-service contracts [0.38, 0.21]
+
+evolve Cross-service contracts 0.46
+
+Organization->Cross-service contracts
+Developer->Coding agent

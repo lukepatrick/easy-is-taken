@@ -73,6 +73,12 @@
 .landscapes .tile-label { font-size: 40px; line-height: 1.2; font-weight: 700; margin-top: auto; }
 .landscapes .tile-cite { font-size: 38px; color: var(--muted); margin-top: auto; }
 
+/* Six endings: the slide 5 grid, with a small map in each tile. The SVG is drawn at tile size, so its labels stay 38px. */
+.endings .tile { padding: 12px 14px 8px; gap: 2px; align-items: center; }
+.endings .tile.walked { padding: 8px 10px 4px; }
+.endings .tile-name { align-self: flex-start; line-height: 1.1; }
+.endings .tile svg { display: block; width: 560px; height: 300px; flex: none; }
+
 /* One line from each */
 .slidev-layout.lines { position: relative; padding: 64px 40px 0 !important; }
 .lines .pls { margin-top: 36px; display: flex; flex-direction: column; gap: 34px; }
@@ -100,7 +106,7 @@
 .map-frame .band .q { font-weight: 500; }
 .map-frame .band .qcite { font-weight: 700; color: var(--muted); white-space: nowrap; margin-left: 12px; }
 
-/* Strapline on slides 5 to 11: the supposition on the left, the repo URL on the right. */
+/* Strapline on slides 5 to 12: the supposition on the left, the repo URL on the right. */
 .slidev-layout .step.strap {
   position: absolute; top: 18px; left: 40px; right: 40px; display: flex; justify-content: space-between; gap: 40px;
   font-size: 38px; font-weight: 700; color: var(--muted); line-height: 1.1; white-space: nowrap;

@@ -1,0 +1,21 @@
+title gameplay, simplified ending
+style plain
+evolution Genesis->Custom-Built->Product->Commodity
+
+// Simplified from maps/candidates/gameplay/07-your-move.owm for the endings slide.
+// Evolution positions are that frame's. Visibility is re-spaced to fit a small tile, and
+// each link stands for a path through components left out here.
+// @scenario gameplay
+// @highlight Production gate
+// @side Prompt metadata = E
+// @side Production gate = NE
+
+anchor Developer [0.98, 0.22]
+
+component Prompt metadata [0.56, 0.34]
+component Production gate [0.12, 0.30]
+
+evolve Production gate 0.58
+
+Developer->Prompt metadata
+Developer->Production gate

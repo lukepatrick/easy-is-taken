@@ -11,7 +11,7 @@ const REPO = 'https://github.com/lukepatrick/easy-is-taken'
 const REPO_SHORT = REPO.replace(/^https:\/\//, '')
 const ME = 'https://linktr.ee/lukephilips'
 const ME_SHORT = ME.replace(/^https:\/\//, '')
-// The strapline row on slides 5 to 11: the supposition on the left, the repo on the right,
+// The strapline row on slides 5 to 12: the supposition on the left, the repo on the right,
 // so someone who walks up mid-talk sees both.
 const SUPPOSITION = 'Supposing writing software is a utility'
 const strap = left => `<div class="step strap"><span>${left}</span><span class="strap-url">${REPO_SHORT}</span></div>`
@@ -82,6 +82,28 @@ frames.forEach((f, i) => {
     : '<div class="band"></div>'
   frameSlides[f.id] = { d, band, svg: `${svgOpen(g, d.headline)}\n${body}\n</svg>`, n: frames.length }
 })
+
+// ---- endings: one small map per scenario (slide 12) ---------------------------------------------------------------
+// Each maps/endings/*.owm is drawn at tile size with the same 38px labels and no axis text. One highlight per tile.
+
+const MINI = { w: 560, h: 300 }
+const mg = geometry(MINI.w, MINI.h, { left: 6, right: 8, top: 40, bottom: 10 })
+const endingFiles = readdirSync(new URL('maps/endings/', root)).filter(f => f.endsWith('.owm')).sort()
+const endings = endingFiles.map(f => {
+  const { map, directives: d } = readOwm(read(`maps/endings/${f}`))
+  for (const k of ['scenario', 'highlight']) if (!d[k]) throw new Error(`endings/${f}: missing // @${k}`)
+  if (!map.components.some(c => c.name === d.highlight)) throw new Error(`endings/${f}: no component "${d.highlight}"`)
+  const scene = sceneOf(map, mg)
+  const { placed: at, total: cost, report: rep } = placeSequence([scene], mg, [], { mini: true, sides: d.sides })
+  if (cost > 1500) console.warn(`endings/${f}: label cost ${Math.round(cost)}\n${rep}`)
+  for (const a of map.anchors) {
+    const hw = textWidth(a.name, FONT.label, 700) / 2, x = mg.x(a.maturity)
+    if (x - hw < 0 || x + hw > MINI.w) throw new Error(`endings/${f}: anchor "${a.name}" runs off the tile`)
+  }
+  const body = drawFrame(map, mg, at, { highlight: d.highlight, mini: true })
+  return { name: d.scenario, svg: `${svgOpen(mg, `${d.scenario}: simplified final map`)}\n${body}\n</svg>` }
+})
+if (endings.length !== 6) throw new Error(`maps/endings: expected 6 maps, found ${endings.length}`)
 
 // ---- primer: the same axes, one dot and one line, then the drift right --------------------------------------
 
@@ -164,6 +186,13 @@ src = src.replace(/^@@lines (\d+) (\d+)@@$/gm, (_, a, b) => order.slice(+a, +b).
 <div class="pl-body"><div class="pl-left">${esc(line.left)}</div>
 <div class="pl-setup">${esc(line.setup)}</div>
 <div class="pl-line">${esc(line.line)}</div></div>
+</div>`
+}).join('\n'))
+src = src.replace(/^@@endings@@$/m, () => endings.map(e => {
+  const dissent = e.name.startsWith('dissent')
+  return `<div class="tile${dissent ? ' dissent' : ''}${e.name === 'climate' ? ' walked' : ''}">
+<div class="tile-name">${esc(e.name)}</div>
+${e.svg}
 </div>`
 }).join('\n'))
 src = src.replace(/^@@qr@@$/m, qr)

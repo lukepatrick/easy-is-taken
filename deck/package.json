@@ -8,7 +8,7 @@
     "build": "npm run frames && slidev build --base ./ --out dist",
     "serve": "cd dist && python3 -m http.server 8765 --bind 127.0.0.1",
     "export:pdf": "npm run frames && TMPDIR=/tmp slidev export slides.md --format pdf --output easy-is-taken.pdf --with-clicks --executable-path /usr/bin/google-chrome --timeout 60000",
-    "shoot": "rm -f screenshots/*.png && node build/shoot.mjs http://127.0.0.1:8765 screenshots \"1 2 3 4:0 4:1 5 6 7 8 9 10:0 10:1 10:2 10:3 11:0 11:1 11:2 11:3 12\" --offline",
+    "shoot": "rm -f screenshots/*.png && node build/shoot.mjs http://127.0.0.1:8765 screenshots \"1 2 3 4:0 4:1 5 6 7 8 9 10:0 10:1 10:2 10:3 11:0 11:1 11:2 11:3 12 13\" --offline",
     "fallback": "node build/make-fallback.mjs"
   },
   "dependencies": {

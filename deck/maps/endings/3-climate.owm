@@ -1,0 +1,21 @@
+title climate, simplified ending
+style plain
+evolution Genesis->Custom-Built->Product->Commodity
+
+// Simplified from deck/maps/04-adjust-or-fall-apart.owm, the last frame the talk walks, for the endings slide.
+// Evolution positions are that frame's. Visibility is re-spaced to fit a small tile, and
+// each link stands for a path through components left out here.
+// @scenario climate
+// @highlight Human gates
+// @side Writing software = S
+// @side Human gates = W
+
+anchor Team shipping a service [0.98, 0.593]
+
+component Writing software [0.76, 0.33]
+component Human gates [0.32, 0.64] inertia
+
+evolve Writing software 0.85
+
+Team shipping a service->Writing software
+Team shipping a service->Human gates

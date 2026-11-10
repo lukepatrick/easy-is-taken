@@ -1,6 +1,6 @@
 # Deck
 
-The 12-slide deck for *Easy Is Taken*, built with [Slidev](https://sli.dev). It runs offline: fonts are bundled, both QR codes are drawn at build time, and the build makes no off-origin requests.
+The 13-slide deck for *Easy Is Taken*, built with [Slidev](https://sli.dev). It runs offline: fonts are bundled, both QR codes are drawn at build time, and the build makes no off-origin requests.
 
 - **Slides:** [`easy-is-taken.pdf`](easy-is-taken.pdf), one page per click, or [`screenshots/`](screenshots/).
 - **No server needed:** `fallback.html` holds every screenshot in one file. Arrow keys or a click step through it.
@@ -25,6 +25,7 @@ Needs Node, [`cli-owm`](https://www.npmjs.com/package/cli-owm) on the PATH, and 
 |---|---|
 | `content.md` | The words: speaker notes, the closing lines, the slide 5 tiles and the quotes on screen, each traced to its source |
 | `maps/*.owm` | The four climate frames. `// @headline`, `@question` and `@highlight` comments set each slide |
+| `maps/endings/*.owm` | Six small maps for slide 12, one per scenario, cut down from each scenario's last frame |
 | `slides.src.md` | The slide template. `build/build.mjs` fills it in to make `slides.md`, which is generated |
 | `build/render-map.mjs` | Draws each map as SVG in slide pixels, after cli-owm parses it |
 | `style.css` | Theme. Nothing on screen is under 38px (28pt on a 1920x1080 TV) |

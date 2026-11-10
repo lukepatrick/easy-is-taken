@@ -1,0 +1,23 @@
+title captured-decisions, simplified ending
+style plain
+evolution Genesis->Custom-Built->Product->Commodity
+
+// Simplified from maps/candidates/captured-decisions/07-who-else-reads-it.owm for the endings slide.
+// Evolution positions are that frame's. Visibility is re-spaced to fit a small tile, and
+// each link stands for a path through components left out here.
+// @scenario captured-decisions
+// @highlight Deciding
+// @side LLM defaults = S
+// @side Deciding = N
+// @side Policy checks = E
+
+anchor The business [0.98, 0.40]
+anchor Developer [0.98, 0.84]
+
+component LLM defaults [0.76, 0.86]
+component Deciding [0.50, 0.12]
+component Policy checks [0.14, 0.52]
+
+The business->Policy checks
+Policy checks->Deciding
+Developer->LLM defaults

@@ -103,7 +103,7 @@ It fits frame 3 because the frame shows the same shape: more change arrives, and
 
 ## 4. Run of show
 
-**Total: 7:55 planned, inside the 9:00 ceiling.** Slide 8 of the first draft (the `.owm` code reveal) was cut on 2026-11-07, and the closing lines became two slides with a setup per scenario, which adds 0:30. The success review estimated the first draft's notes at 8:20 to 8:40 when spoken slowly with no mic. The tangents on slides 7 and 9 are now bracketed or cut, which brings the estimate to about 7:50. The spare time is for the booth: a late start, a changeover, or a question mid-talk. Steps 3 to 5 of the agreed flow (slides 4 to 9) take 3:55.
+**Total: 8:25 planned, inside the 9:00 ceiling.** Slide 8 of the first draft (the `.owm` code reveal) was cut on 2026-11-07, and the closing lines became two slides with a setup per scenario, which adds 0:30. The success review estimated the first draft's notes at 8:20 to 8:40 when spoken slowly with no mic. The tangents on slides 7 and 9 are now bracketed or cut, which brings the estimate to about 7:50. The spare time is for the booth: a late start, a changeover, or a question mid-talk. Steps 3 to 5 of the agreed flow (slides 4 to 9) take 3:55.
 
 | # | Slide | Time | Running |
 |---|---|---|---|
@@ -118,9 +118,10 @@ It fits frame 3 because the frame shows the same shape: more change arrives, and
 | 9 | Climate frame 4 | 0:35 | 5:25 |
 | 10 | What's left, 1 of 2 | 1:00 | 6:25 |
 | 11 | What's left, 2 of 2 | 1:00 | 7:25 |
-| 12 | The repo, and connect with me | 0:30 | 7:55 |
+| 12 | What's left, on six maps | 0:30 | 7:55 |
+| 13 | The repo, and connect with me | 0:30 | 8:25 |
 
-Notes are cues to speak from. Bracketed lines are optional, or to say only if asked. Slides 5 to 11 carry the supposition and the repo URL in a strapline at the top. Fenton is credited once, on slide 2, plus the citation under his F16 line on slide 8.
+Notes are cues to speak from. Bracketed lines are optional, or to say only if asked. Slides 5 to 12 carry the supposition and the repo URL in a strapline at the top. Fenton is credited once, on slide 2, plus the citation under his F16 line on slide 8.
 
 ### 1. Title (0:20)
 
@@ -174,7 +175,7 @@ Sources: the user-need quote is M02 and the climate line paraphrases M01 ("Clima
 
 - Same supposition, six lenses. Point at the two dissents. One borrows Wardley's phrase "a faster craft" and argues the move hasn't happened. That argument is the scenario's, not his. The other follows vibe-coded infra to the end and asks if the platform is still on the map.
 - [Optional: say how these were made. AI agents drafted them from a checked quote ledger and critiqued each one, and I chose what went in the talk.]
-- All six are in the repo, with every map and every review. The address is at the top of the screen from here on. Today we walk one.
+- All six are in the repo, with every map. The address is at the top of the screen from here on. Today we walk one.
 
 ### 6. Climate frame 1 (0:30)
 
@@ -232,9 +233,17 @@ Suggested order: user-need, gameplay, captured-decisions, dissent: faster craft,
 - Climate's row lands second, as the callback to the frames we just walked.
 - Pause on the full slide. Let people photograph it. Each row is on its scenario's page in the repo.
 
-### 12. The repo, and connect with me (0:30)
+### 12. What's left, on six maps (0:30)
 
-**On screen:** two QR codes. One to `github.com/lukepatrick/easy-is-taken` with "Every scenario, map, review and source". One to `linktr.ee/lukephilips`, with my name. The CNPE community logo.
+**On screen:** headline "What’s left, on six maps". The slide 5 grid again, in the same order, with a small map in each tile: two or three components from that scenario's last frame, and the one it says is left in the accent color. Evolution positions are the last frame's; height is re-spaced to fit the tile, and each line stands for a path through components left out. The maps are `deck/maps/endings/*.owm`.
+
+- The same six, where each one ends. Pink is what that scenario says is left.
+- Don't walk them. Point at two that disagree: in faster craft, writing software hasn't moved. In no platform, there's no platform dot at all.
+- These are cut down to two or three components each. The full last frames are in the repo.
+
+### 13. The repo, and connect with me (0:30)
+
+**On screen:** two QR codes. "Thank you!" One to `github.com/lukepatrick/easy-is-taken` with "Every scenario and every map." One to `linktr.ee/lukephilips`, with my name. The CNPE community logo.
 
 - Everything you saw, and the five scenarios we didn't walk, is in there. Every map is a text file: fork one and put the dot where you think it belongs.
 - The other code is me, if you want to argue about where a dot sits.

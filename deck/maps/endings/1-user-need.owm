@@ -1,0 +1,23 @@
+title user-need, simplified ending
+style plain
+evolution Genesis->Custom-Built->Product->Commodity
+
+// Simplified from maps/candidates/user-need/05-who-else-wants-it.owm for the endings slide.
+// Evolution positions are that frame's. Visibility is re-spaced to fit a small tile, and
+// each link stands for a path through components left out here.
+// @scenario user-need
+// @highlight Answer for what runs
+// @side Answer for what runs = E
+// @side Get it through = W
+// @side Get it written = W
+
+anchor Whoever answers for it [0.98, 0.42]
+anchor Developer [0.50, 0.80]
+
+component Answer for what runs [0.76, 0.25]
+component Get it through [0.30, 0.50]
+component Get it written [0.12, 0.78]
+
+Whoever answers for it->Answer for what runs
+Developer->Get it through
+Developer->Get it written
