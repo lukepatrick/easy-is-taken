@@ -8,7 +8,7 @@ evolution Genesis->Custom-Built->Product->Commodity
 // @scenario user-need
 // @highlight Answer for what runs
 // @side Answer for what runs = E
-// @side Get it through = W
+// @side Get it through = NW
 // @side Get it written = W
 
 anchor Whoever answers for it [0.98, 0.42]

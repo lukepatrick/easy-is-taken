@@ -13,6 +13,13 @@
 
 Every map is an [OnlineWardleyMaps](https://onlinewardleymaps.com) `.owm` file, the format of [swardley/WARDLEY-MAP-REPOSITORY](https://github.com/swardley/WARDLEY-MAP-REPOSITORY). Fork one, move a component and see whether you agree with where it lands. Paste a file into [onlinewardleymaps.com](https://onlinewardleymaps.com), open it with the [VS Code extension](https://marketplace.visualstudio.com/items?itemName=damonsk.vscode-wardley-maps), or render it with [cli-owm](https://www.npmjs.com/package/cli-owm).
 
+## Join in
+
+I'm sharing these to start a discussion and trade ideas. No map is perfect, and these six are no exception. If a component sits in the wrong place, or one is missing, say so:
+
+- **Comment or ask:** [open an issue](https://github.com/lukepatrick/easy-is-taken/issues) about any map or scenario.
+- **Propose a change:** fork the repo, edit a `.owm` file and send a pull request.
+
 ## What's here
 
 | Path | What |
