@@ -1,6 +1,6 @@
 # Easy Is Taken
 
-**What's left for platforms when software is a utility?** This repo backs a 10-minute lightning talk by Luke Philips. It holds [six scenarios](scenarios/README.md) for where platform engineering might go, each a Wardley map changing frame by frame, and the research behind them.
+**What's left for platforms when software is a utility?** This repo backs a 10-minute lightning talk by Luke Philips. It holds [six scenarios](scenarios/README.md) for where platform engineering might go, each a Wardley map changing frame by frame.
 
 > **Starting point:** Steve Fenton's post ["Easy is taken"](https://stevefenton.co.uk/blog/2026/10/easy-is-taken/) gave this talk its phrase and idea. I read it as writing software becoming a utility. That's my supposition; neither Fenton nor Wardley says it. Four scenarios run with it and two push back.
 
