@@ -9,7 +9,7 @@
 - **[The six scenarios](scenarios/README.md),** one page each. The talk walked [climate](scenarios/climate.md).
 - **[The slides](deck/easy-is-taken.pdf)** as a PDF.
 
-## The maps are text
+## The maps are code
 
 Every map is an [OnlineWardleyMaps](https://onlinewardleymaps.com) `.owm` file, the format of [swardley/WARDLEY-MAP-REPOSITORY](https://github.com/swardley/WARDLEY-MAP-REPOSITORY). Fork one, move a component and see whether you agree with where it lands. Paste a file into [onlinewardleymaps.com](https://onlinewardleymaps.com), open it with the [VS Code extension](https://marketplace.visualstudio.com/items?itemName=damonsk.vscode-wardley-maps), or render it with [cli-owm](https://www.npmjs.com/package/cli-owm).
 
